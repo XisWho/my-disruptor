@@ -24,6 +24,7 @@ public class MyBatchEventProcessor<T> implements MyEventProcessor {
 
     @Override
     public void run() {
+        // 一开始运行的时候，running为false，此时将running置为true，表示开始运行
         if (!running.compareAndSet(false, true)) {
             throw new IllegalStateException("Thread is already running");
         }
